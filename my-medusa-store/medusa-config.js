@@ -32,7 +32,7 @@ const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
-
+const STRIPE_API_KEY = "sk_test_51Lw9jLCwtZ5B2pa4HqyfqPsXZPTaqHWf0g12wObXvGmwAZcWMJywVvV1lKSUWYpLVgfEYphQJwBFd9PKDqem9XGG00dyctqZar";
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
@@ -52,6 +52,13 @@ const plugins = [
       develop: {
         open: process.env.OPEN_BROWSER !== "false",
       },
+    },
+  },
+  {
+    resolve: `medusa-payment-stripe`,
+    options: {
+      api_key: STRIPE_API_KEY,
+      
     },
   },
 
